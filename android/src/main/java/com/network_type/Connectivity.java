@@ -144,7 +144,7 @@ class Connectivity {
 
 
             case TelephonyManager.NETWORK_TYPE_UNKNOWN:
-                return "unknown";
+                return "";
 
         }
 
