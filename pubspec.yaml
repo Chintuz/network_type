@@ -1,8 +1,8 @@
 name: network_type
 description: A new Flutter plugin.
 version: 0.0.1
-author:
-homepage:
+author: Chirag Shah <chikas92@gmail.com>
+homepage: https://github.com/Chintuz/network_type
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
