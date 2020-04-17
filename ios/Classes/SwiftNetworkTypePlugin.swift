@@ -1,5 +1,7 @@
 import Flutter
 import UIKit
+import Reachability
+import CoreTelephony
 
 public class SwiftNetworkTypePlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -16,18 +18,18 @@ public class SwiftNetworkTypePlugin: NSObject, FlutterPlugin {
         result(getNetworkType())
     }
   }
-    
+
     func getNetworkType()->String {
         do{
-            let reachability:Reachability = try Reachability.reachabilityForInternetConnection()
+            let reachability:Reachability = try Reachability.init()
             do{
                 try reachability.startNotifier()
-                let status = reachability.currentReachabilityStatus
-                if(status == .NotReachable){
+                let status = reachability.connection
+                if(status == .unavailable){
                     return ""
-                }else if (status == .ReachableViaWiFi){
+                }else if (status == .wifi){
                     return "Wifi"
-                }else if (status == .ReachableViaWWAN){
+                }else if (status == .cellular){
                     let networkInfo = CTTelephonyNetworkInfo()
                     let carrierType = networkInfo.currentRadioAccessTechnology
                     switch carrierType{
